@@ -1,12 +1,16 @@
 {
     "env": {
-        "node": true
+      "commonjs": true,
+      "es2021": true,
+      "node": true
     },
+    "extends": "google",
     "rules": {
-        "object-curly-spacing": 0,
-        "new-cap": 0,
-        "space-before-function-paren": 0,
-        "linebreak-style": ["error", "windows"],
-        "indent": ["error", 4]
+      "object-curly-spacing": 0,
+      "new-cap": 0,
+      "space-before-function-paren": 0,
+      "linebreak-style": ["error", "windows"],
+      "indent": ["error", 4]
     }
-}
+  }
+  

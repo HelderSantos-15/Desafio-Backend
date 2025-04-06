@@ -1,64 +1,56 @@
-const pool = require("../configs/db");
+const createConnection = require('../configs/db');
 
+// 📌 Buscar todos os clientes
 async function getClientes() {
-  try {
-    const [rows] = await pool.query("SELECT * FROM clientes");
+    const connection = await createConnection(); // Cria a conexão com o banco de dados
+    const [rows] = await connection.execute('SELECT * FROM clientes');
     return rows;
-  } catch (error) {
-    throw new Error("Erro ao buscar clientes");
-  }
 }
 
+// 📌 Buscar um cliente por ID
 async function getClienteById(id) {
-  try {
-    const [rows] = await pool.query("SELECT * FROM clientes WHERE id = ?", [
-      id,
-    ]);
-    return rows.length ? rows[0] : null;
-  } catch (error) {
-    throw new Error("Erro ao buscar cliente");
-  }
+    const connection = await createConnection(); // Cria a conexão com o banco de dados
+    const [rows] = await connection.execute(
+        'SELECT * FROM clientes WHERE id = ?',
+        [id],
+    );
+    return rows[0];
 }
 
+// 📌 Adicionar um novo cliente
 async function addCliente({ nome, sobrenome, email, idade }) {
-  try {
-    const [result] = await pool.query(
-      "INSERT INTO clientes (nome, sobrenome, email, idade) VALUES (?, ?, ?, ?)",
-      [nome, sobrenome, email, idade]
+    const connection = await createConnection(); // Cria a conexão com o banco de dados
+    const [result] = await connection.execute(
+        'INSERT INTO clientes (nome, sobrenome, email, idade) VALUES (?, ?, ?, ?)',
+        [nome, sobrenome, email, idade],
     );
-    return result.insertId; // Retorna o id do cliente inserido
-  } catch (error) {
-    throw new Error("Erro ao cadastrar cliente");
-  }
+    return result.insertId;
 }
 
+// 📌 Atualizar um cliente
 async function updateCliente(id, { nome, sobrenome, email, idade }) {
-  try {
-    const [result] = await pool.query(
-      "UPDATE clientes SET nome = ?, sobrenome = ?, email = ?, idade = ? WHERE id = ?",
-      [nome, sobrenome, email, idade, id]
+    const connection = await createConnection(); // Cria a conexão com o banco de dados
+    const [result] = await connection.execute(
+        'UPDATE clientes SET nome = ?, sobrenome = ?, email = ?, idade = ? WHERE id = ?',
+        [nome, sobrenome, email, idade, id],
     );
     return result.affectedRows;
-  } catch (error) {
-    throw new Error("Erro ao atualizar cliente");
-  }
 }
 
+// 📌 Deletar um cliente
 async function deleteCliente(id) {
-  try {
-    const [result] = await pool.query("DELETE FROM clientes WHERE id = ?", [
-      id,
-    ]);
+    const connection = await createConnection(); // Cria a conexão com o banco de dados
+    const [result] = await connection.execute(
+        'DELETE FROM clientes WHERE id = ?',
+        [id],
+    );
     return result.affectedRows;
-  } catch (error) {
-    throw new Error("Erro ao excluir cliente");
-  }
 }
 
 module.exports = {
-  getClientes,
-  getClienteById,
-  addCliente,
-  updateCliente,
-  deleteCliente,
+    getClientes,
+    getClienteById,
+    addCliente,
+    updateCliente,
+    deleteCliente,
 };

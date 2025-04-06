@@ -1,15 +1,17 @@
 {
   "name": "desafio-backend",
   "version": "1.0.0",
+  "description": "Desafio Backend para criação de uma API com clientes e produtos",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "dev": "nodemon app.js",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "Desafio Backend  para criaçao de uma API com clientes e produtos",
   "dependencies": {
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
@@ -17,7 +19,6 @@
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
-    "express-generator": "^4.2.0",
     "helmet": "^8.1.0",
     "http-errors": "^2.0.0",
     "jade": "^0.29.0",
@@ -26,8 +27,8 @@
     "mysql2": "^3.14.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.23.0",
-    "eslint": "^9.23.0",
+    "@eslint/js": "^9.24.0",
+    "eslint": "^8.42.0",
     "eslint-config-google": "^0.14.0",
     "globals": "^16.0.0",
     "nodemon": "^3.1.9"
@@ -36,7 +37,6 @@
     "type": "git",
     "url": "git+https://github.com/HelderSantos-15/Desafio-Backend.git"
   },
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/HelderSantos-15/Desafio-Backend/issues"
   },
