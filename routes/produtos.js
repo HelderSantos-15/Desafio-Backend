@@ -39,7 +39,9 @@ router.post('/', async (req, res) => {
     const { nome, descricao, preco, quantidade } = req.body;
     if (!nome || !descricao || !preco || !quantidade) {
     // Validação simples para verificar se todos os campos foram fornecidos
-        return res.status(400).json({ message: 'Todos os campos são obrigatórios' });
+        return res
+            .status(400)
+            .json({ message: 'Todos os campos são obrigatórios' });
     }
 
     try {
@@ -49,7 +51,9 @@ router.post('/', async (req, res) => {
             preco,
             quantidade,
         }); // Chama o serviço para adicionar um novo produto
-        res.status(201).json({ message: 'Produto criado com sucesso', id: novoProdutoId }); // Retorna o ID do produto criado
+        res
+            .status(201)
+            .json({ message: 'Produto criado com sucesso', id: novoProdutoId }); // Retorna o ID do produto criado
     } catch (error) {
         console.error('Erro ao cadastrar produto:', error);
         res.status(500).json({ message: 'Erro ao cadastrar produto' });
@@ -62,7 +66,9 @@ router.put('/:id', async (req, res) => {
     const { nome, descricao, preco, quantidade } = req.body;
     if (!nome || !descricao || !preco || !quantidade) {
     // Validação simples para verificar se todos os campos foram fornecidos
-        return res.status(400).json({ message: 'Todos os campos são obrigatórios' });
+        return res
+            .status(400)
+            .json({ message: 'Todos os campos são obrigatórios' });
     }
 
     try {

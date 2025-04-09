@@ -22,7 +22,13 @@ router.get('/:id', getClienteById);
 router.post('/', validateName, validateFamilyName, validateAge, addCliente);
 
 // 📌 Atualizar um cliente pelo ID (com validação)
-router.put('/:id', validateName, validateFamilyName, validateAge, updateCliente);
+router.put(
+    '/:id',
+    validateName,
+    validateFamilyName,
+    validateAge,
+    updateCliente,
+);
 
 // 📌 Deletar um cliente pelo ID
 router.delete('/:id', deleteCliente);
